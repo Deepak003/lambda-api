@@ -5,7 +5,7 @@ const app = express();
 const path = require('path');
 const serverless = require('serverless-http');
 
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const router = express.Router();
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -44,7 +44,7 @@ router.get('/pdf', async (req, res) => {
     res.contentType("application/pdf");
     res.send(pdf);
 })
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 

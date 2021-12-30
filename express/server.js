@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 //How to Run the code 
 //http://localhost:3000/pdf?target=https://stackoverflow.com/questions/14417592/node-js-difference-between-req-query-and-req-params
 
-router.get("/pdf", async (req, res) => {
+router.get('/pdf', async (req, res) => {
     const url = req.query.target;
 
     const browser = await puppeteer.launch({

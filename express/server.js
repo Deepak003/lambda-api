@@ -17,18 +17,18 @@ router.get('/', (req, res) => {
 
 router.get('/pdf', (req, res) => {
     const url = req.query.target;
-console.log('url',url);
-    const browser = await puppeteer.launch({
+    console.log('url',url);
+    const browser = puppeteer.launch({
         headless: true
     });
 
-    const webPage = await browser.newPage();
+    const webPage = browser.newPage();
 
-    await webPage.goto(url, {
+    webPage.goto(url, {
         waitUntil: "networkidle0"
     });
 
-    const pdf = await webPage.pdf({
+    const pdf = webPage.pdf({
         printBackground: true,
         format: "Letter",
         margin: {
@@ -39,7 +39,7 @@ console.log('url',url);
         }
     });
 
-    await browser.close();
+    browser.close();
 
     res.contentType("application/pdf");
     res.send(pdf);

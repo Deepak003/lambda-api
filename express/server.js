@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 router.get('/pdf', async (req, res) => {
     const url = req.query.target;
-
+console.log('url',url);
     const browser = await puppeteer.launch({
         headless: true
     });
